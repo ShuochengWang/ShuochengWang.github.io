@@ -2,7 +2,7 @@
 title: 基于Hexo搭建个人博客
 date: 2019-01-17 21:01:28
 categories: 博客
-tags: hexo
+tags: Hexo
 ---
 # 基于Hexo搭建个人博客
 
