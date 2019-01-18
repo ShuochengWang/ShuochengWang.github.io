@@ -4,8 +4,6 @@ date: 2019-01-17 21:01:28
 categories: 博客
 tags: Hexo
 ---
-# 基于Hexo搭建个人博客
-
 ##### 安装
 
 安装 Node.js,  Git
@@ -23,7 +21,7 @@ npm install -g hexo-cli
 安装 Hexo 完成后，执行下列命令
 
 ```bash
-mkdir blog
+mkdir blog # 你的博客文件夹名称
 hexo init blog
 cd blog
 npm install
@@ -42,6 +40,8 @@ npm install
 配置NexT主题 http://theme-next.iissnan.com/getting-started.html
 
 安装该主题网页进行相关设置即可，对分类、标签的相关设置也在其中。
+
+*安装了一些第三方插件，例如记录阅读数量的插件“不蒜子”，不过我使用的next版本内部自带的不蒜子的链接过期了，需要修改才能正常使用。文件路径为/theme/next/layout/_third-party/analytics/busuanzi-counter.swig，将链接修改为"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"。详见不蒜子主页https://busuanzi.ibruce.info/。*
 
 
 
@@ -68,7 +68,7 @@ npm install hexo-deployer-git --save
 ```
 deploy:
   	type: git  
-	repo: git@github.com:ShuochengWang/ShuochengWang.github.io.git
+	repo: git@github.com:yourname/yourname.github.io.git  #你的git仓库地址
 	branch:  master        #[branch]
 	message:               #[message]
 ```
@@ -93,10 +93,14 @@ Github上需要设置如下：
 
 ```
 主机记录     记录类型           记录值
- @              A             192.30.252.153
- @              A             192.30.252.154
- www          CNAME           username.github.io.
+ @              A             185.199.111.153
+ @              A             185.199.110.153
+ @              A             185.199.109.153
+ @              A             185.199.108.153
+ www          CNAME           username.github.io
 ```
+
+（参考https://help.github.com/articles/setting-up-an-apex-domain/ 和 https://help.github.com/articles/setting-up-a-www-subdomain/ ）
 
 然后在 source 文件夹中新建一个 CNAME 文件（无后缀），CNAME 中写入你的域名，例如：
 
@@ -123,7 +127,7 @@ git push origin blog
 
 
 
-##### 常用命令：
+##### 常用命令
 
 ```bash
 hexo clean
