@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://shuochengwang.com/2019/03/14/翻译：Accelerate-Spark-and-Hive-Jobs-on-AWS-S3-by-10x-with-Alluxio-Tiered-Storage/1.png">
 <meta property="og:image" content="http://shuochengwang.com/2019/03/14/翻译：Accelerate-Spark-and-Hive-Jobs-on-AWS-S3-by-10x-with-Alluxio-Tiered-Storage/2.png">
 <meta property="og:image" content="http://shuochengwang.com/2019/03/14/翻译：Accelerate-Spark-and-Hive-Jobs-on-AWS-S3-by-10x-with-Alluxio-Tiered-Storage/3.png">
-<meta property="og:updated_time" content="2019-03-14T07:54:57.375Z">
+<meta property="og:updated_time" content="2019-03-14T08:01:21.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="翻译：Accelerate Spark and Hive Jobs on AWS S3 by 10x with Alluxio Tiered Storage">
 <meta name="twitter:description" content="基于Alluxio分层存储将AWS S3上的Spark和Hive作业加速10倍Alluxio技术博客翻译系列——Accelerate Spark and Hive Jobs on AWS S3 by 10x with Alluxio Tiered Storage 原文地址 本文也会发布在微信公众号“Alluxio”上，欢迎关注该微信公众号。  在本文中，来自Bazaarvoice的 Thai Bu">
@@ -441,14 +441,14 @@
 <h2 id="微型程序基准测试和现实应用基准测试的结果"><a href="#微型程序基准测试和现实应用基准测试的结果" class="headerlink" title="微型程序基准测试和现实应用基准测试的结果"></a>微型程序基准测试和现实应用基准测试的结果</h2><p><img src="2.png" alt="å¾®è§åç°å®ä¸ççåºåæµè¯ç&quot;æ"></p>
 <p>我们的Alluxio + ZFS + NVMe SSD读微观基准测试是在i3.4xlarge AWS实例上执行的，具有高达10 Gbit网络带宽、128GB RAM和两个1.9TB NVMe SSD。我们将一个真实世界生产环境的S3 bucket挂载到Alluxio，并执行2次读测试。第一个测试使用AWS CLI以递归方式下载大约5Gb的Parquet数据到ramdisk（仅测量读性能）。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># using AWS cli to copy recursively to RAM disk</span><br><span class="line"></span><br><span class="line">$ time aws s3 cp --recursive s3://&lt;bucket&gt;/dir /mnt/ramdisk</span><br></pre></td></tr></table></figure>
-<pre><code>第二个测试使用Alluxio CLI将相同的Parquet数据下载到ramdisk。这次，我们进行了3次测试，得到了冷(cold)、暖(warm)、热(hot)的数值，如上图所示。
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># using AWS cli to copy recursively to RAM disk</span><br><span class="line"></span><br><span class="line">$ time ./bin/alluxio fs copyToLocal /mnt/s3/dir /mnt/ramdisk</span><br></pre></td></tr></table></figure>
-<pre><code>与S3相比，使用ZFS和NVMe的Alluxio v1.7执行冷读取的时间缩短了约78％（66秒vs. 37秒）。连续的暖读取和热读取分别比直接从S3读取快2.5倍和4.6倍。
-</code></pre><p>然而，微型基准测试并不能说明全部问题，因此我们来看一下Bazaarvoice的分析师实际执行的一些真实世界的查询。</p>
+<p>第二个测试使用Alluxio CLI将相同的Parquet数据下载到ramdisk。这次，我们进行了3次测试，得到了冷(cold)、暖(warm)、热(hot)的数值，如上图所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># using AWS cli to copy recursively to RAM disk</span><br><span class="line"></span><br><span class="line">$ time ./bin/alluxio fs copyToLocal /mnt/s3/dir /mnt/ramdisk</span><br></pre></td></tr></table></figure>
+<p>与S3相比，使用ZFS和NVMe的Alluxio v1.7执行冷读取的时间缩短了约78％（66秒vs. 37秒）。连续的暖读取和热读取分别比直接从S3读取快2.5倍和4.6倍。</p>
+<p>然而，微型基准测试并不能说明全部问题，因此我们来看一下Bazaarvoice的分析师实际执行的一些真实世界的查询。</p>
 <p>我们周末基于生产环境的交互式集群，重新在分层存储系统（默认配置）和S3（通过关闭分层存储）上运行查询。生产集群是20台i3.4xlarge节点，每个节点运行Hadoop 3和Hive 3.0（位于Alluxio 1.7和ZFS v0.7.12-1上）。</p>
 <p><img src="3.png" alt="s3 vsåå±å­å¨æ¥è¯¢åºå"></p>
-<pre><code>查询1是单个表进行去重查询，该查询是对6列进行分组操作（group by）。查询2是更复杂的4个表的join查询，该查询包含对5个列的分组（group by）和聚合操作（aggregation）。查询1处理来自200G数据集的95M输入记录和8G Parquet数据。查询2处理来自几个TB数据集的1.2B输入记录和50G的Parquet数据。
-</code></pre><p>为了让读者易于理解，我们简化了这两个查询，其查询方案如下所示。与直接在S3上运行查询相比，分层存储系统能够将查询1加速11倍，查询2加速6倍。</p>
+<p>查询1是单个表进行去重查询，该查询是对6列进行分组操作（group by）。查询2是更复杂的4个表的join查询，该查询包含对5个列的分组（group by）和聚合操作（aggregation）。查询1处理来自200G数据集的95M输入记录和8G Parquet数据。查询2处理来自几个TB数据集的1.2B输入记录和50G的Parquet数据。</p>
+<p>为了让读者易于理解，我们简化了这两个查询，其查询方案如下所示。与直接在S3上运行查询相比，分层存储系统能够将查询1加速11倍，查询2加速6倍。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># query 1 simplified</span><br><span class="line"></span><br><span class="line">SELECT dt, col1, col2, col3, col4, col5 </span><br><span class="line"></span><br><span class="line">FROM table_1 n</span><br><span class="line"></span><br><span class="line">WHERE lower(col6) = lower(&apos;&lt;some_value&gt;&apos;)</span><br><span class="line"></span><br><span class="line">   AND month = 1</span><br><span class="line"></span><br><span class="line">   AND year = 2019</span><br><span class="line"></span><br><span class="line">   AND (col7 IS NOT NULL OR col8 IS NOT NULL)</span><br><span class="line"></span><br><span class="line">GROUP BY dt, col1, col2, col3, col4, col5 </span><br><span class="line"></span><br><span class="line">ORDER BY dt DESC</span><br><span class="line"></span><br><span class="line">LIMIT 100;</span><br></pre></td></tr></table></figure>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>Alluxio、ZFS和分层存储架构帮助我们为Bazaarvoice的分析师节省了大量时间。AWS S3易于扩展，能够通过灵活且便宜的分层存储配置进行扩充，从而使得我们可以专注于发展业务并根据需求“向上扩展”存储。</p>
 <p>Bazaarvoice当前的生产配置可以处理大约35T的缓存数据和半PB存储在S3上的数据。如果要应对未来的数据增长，我们可以简单地添加更多节点以启用更多缓存数据集，或者升级硬件（i3.4xlarge - &gt; i3.8xlarge - &gt; i3.metal）以实现更快的本地化访问，或者同时采用这两种方法。</p>
