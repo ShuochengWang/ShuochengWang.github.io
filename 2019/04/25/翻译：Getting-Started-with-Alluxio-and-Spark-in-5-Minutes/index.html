@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Alluxio,">
 
 
 
@@ -79,16 +79,20 @@
 
 
 
-<meta name="description" content="王烁程的博客。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Shuocheng&#39;s Blog">
-<meta property="og:url" content="http://shuochengwang.com/categories/翻译/index.html">
+<meta name="description" content="5分钟快速上手Alluxio和SparkAlluxio技术博客翻译系列——Getting Started with Alluxio and Spark in 5 Minutes 原文地址 本文也会发布在微信公众号“Alluxio”上，欢迎关注该微信公众号。  简介Apache Spark给大数据计算带来了重大革新，将其与Alluxio配合使用时，其效果还将更加出色。Alluxio为Spark提供了">
+<meta name="keywords" content="Alluxio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译：Getting Started with Alluxio and Spark in 5 Minutes">
+<meta property="og:url" content="http://shuochengwang.com/2019/04/25/翻译：Getting-Started-with-Alluxio-and-Spark-in-5-Minutes/index.html">
 <meta property="og:site_name" content="Shuocheng&#39;s Blog">
-<meta property="og:description" content="王烁程的博客。">
+<meta property="og:description" content="5分钟快速上手Alluxio和SparkAlluxio技术博客翻译系列——Getting Started with Alluxio and Spark in 5 Minutes 原文地址 本文也会发布在微信公众号“Alluxio”上，欢迎关注该微信公众号。  简介Apache Spark给大数据计算带来了重大革新，将其与Alluxio配合使用时，其效果还将更加出色。Alluxio为Spark提供了">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://shuochengwang.com/2019/04/25/翻译：Getting-Started-with-Alluxio-and-Spark-in-5-Minutes/setting-up-alluxio.png">
+<meta property="og:updated_time" content="2019-04-25T05:26:29.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shuocheng&#39;s Blog">
-<meta name="twitter:description" content="王烁程的博客。">
+<meta name="twitter:title" content="翻译：Getting Started with Alluxio and Spark in 5 Minutes">
+<meta name="twitter:description" content="5分钟快速上手Alluxio和SparkAlluxio技术博客翻译系列——Getting Started with Alluxio and Spark in 5 Minutes 原文地址 本文也会发布在微信公众号“Alluxio”上，欢迎关注该微信公众号。  简介Apache Spark给大数据计算带来了重大革新，将其与Alluxio配合使用时，其效果还将更加出色。Alluxio为Spark提供了">
+<meta name="twitter:image" content="http://shuochengwang.com/2019/04/25/翻译：Getting-Started-with-Alluxio-and-Spark-in-5-Minutes/setting-up-alluxio.png">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://shuochengwang.com/categories/翻译/">
+  <link rel="canonical" href="http://shuochengwang.com/2019/04/25/翻译：Getting-Started-with-Alluxio-and-Spark-in-5-Minutes/">
 
 
 
 
 
-  <title>分类: 翻译 | Shuocheng's Blog</title>
+  <title>翻译：Getting Started with Alluxio and Spark in 5 Minutes | Shuocheng's Blog</title>
   
 
 
@@ -143,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,183 +293,214 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>翻译<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://shuochengwang.com/2019/04/25/翻译：Getting-Started-with-Alluxio-and-Spark-in-5-Minutes/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuocheng Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Shuocheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/04/25/翻译：Getting-Started-with-Alluxio-and-Spark-in-5-Minutes/" itemprop="url">
-              
-                <span itemprop="name">翻译：Getting Started with Alluxio and Spark in 5 Minutes</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">翻译：Getting Started with Alluxio and Spark in 5 Minutes</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-25T13:20:48+08:00" content="2019-04-25">
-          04-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-25T13:20:48+08:00">
+                2019-04-25
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/04/翻译：Announcing-Alluxio-2-0-Preview-enabling-hyper-scale-data-workloads-in-the-cloud/" itemprop="url">
-              
-                <span itemprop="name">翻译：Announcing Alluxio 2.0 Preview - enabling hyper-scale data workloads in the cloud</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-04T19:56:15+08:00" content="2019-04-04">
-          04-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/21/翻译：Top-5-Performance-Tuning-Tips-for-Running-Presto-on-Alluxio/" itemprop="url">
-              
-                <span itemprop="name">翻译：Top 5 Performance Tuning Tips for Running Presto on Alluxio</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-21T16:59:37+08:00" content="2019-03-21">
-          03-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/14/翻译：Accelerate-Spark-and-Hive-Jobs-on-AWS-S3-by-10x-with-Alluxio-Tiered-Storage/" itemprop="url">
-              
-                <span itemprop="name">翻译：Accelerate Spark and Hive Jobs on AWS S3 by 10x with Alluxio Tiered Storage</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-14T15:43:46+08:00" content="2019-03-14">
-          03-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/07/翻译：One Click to Benchmark Spark + Alluxio + S3 Stack with TPC-DS queries on AWS/" itemprop="url">
-              
-                <span itemprop="name">翻译：One Click to Benchmark Spark + Alluxio + S3 Stack with TPC-DS queries on AWS</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-07T15:45:30+08:00" content="2019-03-07">
-          03-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/25/翻译：Alluxio-Developer-Tip-Why-am-I-seeing-the-error-User-yarn-is-not-configured-for-any-impersonation-impersonationUser-foo/" itemprop="url">
-              
-                <span itemprop="name">翻译：Alluxio Developer Tip: Why am I seeing the error 'User yarn is not configured for any impersonation. impersonationUser foo'</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-25T15:29:21+08:00" content="2019-02-25">
-          02-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="5分钟快速上手Alluxio和Spark"><a href="#5分钟快速上手Alluxio和Spark" class="headerlink" title="5分钟快速上手Alluxio和Spark"></a>5分钟快速上手Alluxio和Spark</h1><p>Alluxio技术博客翻译系列——Getting Started with Alluxio and Spark in 5 Minutes</p>
+<p><a href="http://www.alluxio.com/blog/getting-started-with-alluxio-and-spark-in-5-minutes" target="_blank" rel="noopener">原文地址</a></p>
+<p>本文也会发布在微信公众号“<strong>Alluxio</strong>”上，欢迎关注该微信公众号。</p>
+<hr>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Apache Spark给大数据计算带来了重大革新，将其与Alluxio配合使用时，其效果还将更加出色。<a href="https://www.alluxio.org/" target="_blank" rel="noopener">Alluxio</a>为Spark提供了可靠的数据共享层，通过Alluxio处理存储， Spark在执行应用程序逻辑时更加得心应手。Bazaarvoice使用Spark和Alluxio构建了实时大数据平台，该平台不仅能够在黑色星期五等高峰事件中处理15亿次页面浏览量，还能对这些数据进行实时分析（<a href="https://www.alluxio.com/blog/accelerate-spark-and-hive-jobs-on-aws-s3-by-10x-with-alluxio-tiered-storage" target="_blank" rel="noopener">更多内容</a>）。在这种规模下，速度的提升能够给新工作负载赋能。我们已经构建了一个简洁的方法来集成Alluxio和Spark。</p>
+<p>本博客面向那些对如何利用Alluxio和Spark感兴趣的新人，所有示例都可以通过简单步骤在本地计算机上复现。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>要开始使用Alluxio和Spark，首先需要下载两个系统的发行版，安装Java 8并下载示例数据以完成练习。</p>
+<ul>
+<li><a href="https://www.alluxio.org/download" target="_blank" rel="noopener">Alluxio 1.8.1</a></li>
+<li><a href="https://spark.apache.org/downloads.html" target="_blank" rel="noopener">Spark 2.4.0</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">安装Java - JDK 8</a></li>
+<li><a href="https://alluxio-public.s3.amazonaws.com/sample-2g.tar.gz" target="_blank" rel="noopener">示例数据文件</a></li>
+</ul>
+<p>将Alluxio和Spark下载到工作目录。样本数据文件也可以下载和解压缩到此处，或者<code>/tmp</code>目录。Spark必须引用样本文件的完整路径。</p>
+<h2 id="配置Alluxio"><a href="#配置Alluxio" class="headerlink" title="配置Alluxio"></a>配置Alluxio</h2><ul>
+<li>打开远程登录服务，以便能够成功<code>ssh localhost</code>。</li>
+</ul>
+<p><img src="setting-up-alluxio.png" alt="远程登录"></p>
+<ul>
+<li>为避免重复输入密码，可以将主机的公共SSH密钥添加到<code>~/.ssh/authorized_keys</code>。有关详细信息，请参阅<a href="http://www.linuxproblem.org/art_9.html" target="_blank" rel="noopener">本教程</a>。</li>
+</ul>
+<p>从<a href="http://alluxio.org/download" target="_blank" rel="noopener">Alluxio网站</a>下载、解压并启动Alluxio的预编译版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxf alluxio-1.8.1-bin.tar.gz</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> alluxio-1.8.1</span><br><span class="line"></span><br><span class="line">$ bin/alluxio bootstrap-conf localhost</span><br><span class="line"></span><br><span class="line">$ bin/alluxio-start.sh <span class="built_in">local</span> -f</span><br></pre></td></tr></table></figure>
+<p>访问<a href="http://localhost:19999/home" target="_blank" rel="noopener">localhost:19999/home</a>的Web UI，验证Alluxio系统是否正在运行。</p>
+<h2 id="配置Spark"><a href="#配置Spark" class="headerlink" title="配置Spark"></a>配置Spark</h2><p>解压缩Spark的预编译版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxf spark-2.4.0-bin-hadoop2.7.tgz</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> spark-2.4.0-bin-hadoop2.7</span><br></pre></td></tr></table></figure>
+<p>通过在Spark项目目录下运行以下命令来启动<code>spark-shell</code>程序。在交互式shell中，你可以处理来自各种源的数据，在当前情况下，数据源是本地文件系统。</p>
+<h2 id="集成Alluxio和Spark"><a href="#集成Alluxio和Spark" class="headerlink" title="集成Alluxio和Spark"></a>集成Alluxio和Spark</h2><p>Spark需要使用Alluxio客户端jar包才能让Spark程序与Alluxio交互；Alluxio客户端jar包是两个系统的集成点。使用<code>--driver-class-path</code>参数后跟客户端jar包的路径指定它，该客户端jar包位于Alluxio包的client目录中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> spark-2.4.0-bin-hadoop2.7</span><br><span class="line"></span><br><span class="line">$ bin/spark-shell --driver-class-path &lt;PATH&gt;/alluxio-1.8.1/client/alluxio-1.8.1-client.jar</span><br></pre></td></tr></table></figure>
+<h2 id="运行一个简单的示例"><a href="#运行一个简单的示例" class="headerlink" title="运行一个简单的示例"></a>运行一个简单的示例</h2><p>作为第一个示例，我们将使用Alluxio和Spark从本地存储读取数据，借此来熟悉两个系统的集成。之前下载的示例数据文件包含了大小为2gb的文件，该文件的内容为从英语词典中随机生成的单词。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /tmp</span><br><span class="line"></span><br><span class="line">$ tar -zxf sample-2g.tar.gz</span><br></pre></td></tr></table></figure>
+<p>在Spark中处理2gb样本文件并计算其中的行数。确保指定了正确的文件路径。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; val file = sc.textFile(<span class="string">"/tmp/sample-2g"</span>)</span><br><span class="line"></span><br><span class="line">scala&gt; file.count()</span><br></pre></td></tr></table></figure>
+<p>Alluxio还可以用作数据的源或接收点。你可以将文件保存到Alluxio，并且类似地对Alluxio的数据执行相同的操作，就像对本地文件系统一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; file.saveAsTextFile(<span class="string">"alluxio://localhost:19998/sample-2g"</span>)</span><br><span class="line"></span><br><span class="line">scala&gt; val alluxioFile = sc.textFile(<span class="string">"alluxio://localhost:19998/sample-2g"</span>)</span><br><span class="line"></span><br><span class="line">scala&gt; alluxioFile.count()</span><br></pre></td></tr></table></figure>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本文是使用Alluxio和Spark的简单介绍。我们的后续的博客将详细介绍利用Alluxio和Spark的优势：</p>
+<ul>
+<li>多个作业之间的数据共享：只有一个作业需要从冷数据中慢速读取</li>
+<li>作业失败易恢复：Alluxio在作业失败或重新启动时保留数据</li>
+<li>托管存储：Alluxio优化了跨应用程序分配的存储的利用率</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Alluxio/" rel="tag"># Alluxio</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/04/翻译：Announcing-Alluxio-2-0-Preview-enabling-hyper-scale-data-workloads-in-the-cloud/" rel="next" title="翻译：Announcing Alluxio 2.0 Preview - enabling hyper-scale data workloads in the cloud">
+                <i class="fa fa-chevron-left"></i> 翻译：Announcing Alluxio 2.0 Preview - enabling hyper-scale data workloads in the cloud
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -473,6 +508,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -493,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -576,6 +624,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#5分钟快速上手Alluxio和Spark"><span class="nav-number">1.</span> <span class="nav-text">5分钟快速上手Alluxio和Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">1.2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Alluxio"><span class="nav-number">1.3.</span> <span class="nav-text">配置Alluxio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Spark"><span class="nav-number">1.4.</span> <span class="nav-text">配置Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成Alluxio和Spark"><span class="nav-number">1.5.</span> <span class="nav-text">集成Alluxio和Spark</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行一个简单的示例"><span class="nav-number">1.6.</span> <span class="nav-text">运行一个简单的示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">1.7.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -743,6 +807,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
