@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://shuochengwang.com/2019/04/28/翻译：Moving-From-Apache-Thrift-to-gRPC-A-Perspective-From-Alluxio/alluxio-1-rpc.png">
 <meta property="og:image" content="http://shuochengwang.com/2019/04/28/翻译：Moving-From-Apache-Thrift-to-gRPC-A-Perspective-From-Alluxio/alluxio-2-rpc.png">
-<meta property="og:updated_time" content="2019-04-28T09:04:13.945Z">
+<meta property="og:updated_time" content="2019-04-28T09:07:39.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="翻译：Moving From Apache Thrift to gRPC A Perspective From Alluxio">
 <meta name="twitter:description" content="从Apache Thrift迁移到gRPC：Alluxio视角Alluxio技术博客翻译系列——Moving From Apache Thrift to gRPC A Perspective From Alluxio 原文地址 本文也会发布在微信公众号“Alluxio”上，欢迎关注该微信公众号。  作为Alluxio 2.0版本的一部分，我们将RPC框架从Apache Thrift变为gRPC。在">
@@ -408,10 +408,10 @@
 <hr>
 <p>作为Alluxio 2.0版本的一部分，我们将RPC框架从<a href="https://thrift.apache.org/" target="_blank" rel="noopener">Apache Thrift</a>变为<a href="https://grpc.io/" target="_blank" rel="noopener">gRPC</a>。在本文中，我们将讨论这一变化背后的原因以及我们在此过程中学到的一些经验。</p>
 <p>Alluxio是一个开源的分布式虚拟文件系统。作为数据访问层，Alluxio使得大数据和ML应用程序能够利用数据本地性和许多其他特性，处理来自多个异构存储系统的数据。Alluxio基于master/worker架构构建，其中master处理元数据操作，worker处理读取和写入数据的请求。在Alluxio 1.x中，客户端和服务器之间的RPC通信主要是基于Apache Thrift。Thrift使得我们能够在简单的IDL文件中定义Alluxio服务接口，并使用Thrift编译器生成的原生Java接口实现客户端绑定。然而，随着不断开发Alluxio的新功能和改进Alluxio，我们面临着一些挑战。</p>
-<h2 id="Apache-Thrift的局限性"><a href="#Apache-Thrift的局限性" class="headerlink" title="Apache Thrift的局限性"></a>Apache Thrift的局限性</h2><pre><code>Thrift最大的缺点之一，是缺乏对大规模数据流的支持，而支持大规模数据流对于Alluxio至关重要，因为Alluxio作为分布式文件系统要能够提供数据密集型工作负载。在Alluxio 1.x中，我们在[Netty](https://netty.io/)上实现了一个轻量级数据流框架作为解决方案，Netty是一个基于Java的异步事件驱动的网络框架。以下是RPC客户端和服务器的架构说明：
-</code></pre><p><img src="alluxio-1-rpc.png" alt="alluxio-1-rpc"></p>
-<pre><code>虽然Netty提供了高性能和灵活的网络API，但其编程接口相对底层，并且需要我们在其上实现许多更高层的重要功能，例如流控制和文件系统身份认证。这不仅使实现新的服务端点的成本更高，而且还大大增加了Alluxio客户端的复杂性，使得为新语言提供客户端绑定变得更加困难。
-</code></pre><p>这种架构还需要我们维护两个网络技术栈：使用Thrift构建的master控制RPC服务和使用Netty构建的worker数据/控制RPC服务。以两种不同的方式定义服务会使代码库难以维护和理解。对于每个跨服务使用的常见功能，我们还需要提供两个实现，这为工程团队增加了更多的工作负担。</p>
+<h2 id="Apache-Thrift的局限性"><a href="#Apache-Thrift的局限性" class="headerlink" title="Apache Thrift的局限性"></a>Apache Thrift的局限性</h2><p>Thrift最大的缺点之一，是缺乏对大规模数据流的支持，而支持大规模数据流对于Alluxio至关重要，因为Alluxio作为分布式文件系统要能够提供数据密集型工作负载。在Alluxio 1.x中，我们在<a href="https://netty.io/" target="_blank" rel="noopener">Netty</a>上实现了一个轻量级数据流框架作为解决方案，Netty是一个基于Java的异步事件驱动的网络框架。以下是RPC客户端和服务器的架构说明：</p>
+<p><img src="alluxio-1-rpc.png" alt="alluxio-1-rpc"></p>
+<p>虽然Netty提供了高性能和灵活的网络API，但其编程接口相对底层，并且需要我们在其上实现许多更高层的重要功能，例如流控制和文件系统身份认证。这不仅使实现新的服务端点的成本更高，而且还大大增加了Alluxio客户端的复杂性，使得为新语言提供客户端绑定变得更加困难。</p>
+<p>这种架构还需要我们维护两个网络技术栈：使用Thrift构建的master控制RPC服务和使用Netty构建的worker数据/控制RPC服务。以两种不同的方式定义服务会使代码库难以维护和理解。对于每个跨服务使用的常见功能，我们还需要提供两个实现，这为工程团队增加了更多的工作负担。</p>
 <h2 id="gRPC的优势"><a href="#gRPC的优势" class="headerlink" title="gRPC的优势"></a>gRPC的优势</h2><p>gRPC是由Google开发的高性能开源RPC框架。自2015年发布以来，gRPC日趋成熟，并成为跨语言RPC通信最受欢迎的选择之一。gRPC有许多很棒的特性，我们从中受益最多的是：</p>
 <ul>
 <li><strong>内置流式RPC支持</strong>：这意味着我们可以使用相同的RPC框架来处理控制路径上的一次性RPC调用以及通过分块进行数据传输。这将极大地帮助我们统一网络代码路径并简化逻辑。</li>
