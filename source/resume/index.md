@@ -5,4 +5,4 @@ type: "resume"
 comments: false
 ---
 
-待施工
+<object data="resume.pdf" type="application/pdf" width="100%" height="910px">
