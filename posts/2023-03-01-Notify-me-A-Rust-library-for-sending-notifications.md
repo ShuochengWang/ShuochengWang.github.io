@@ -9,8 +9,6 @@ description: "notify-me: A Rust library for sending notifications. Send notifica
 
 [notify-me](https://github.com/ShuochengWang/notify-me): Send notifications to email or communication software, such as WeChat. It is very suitable for developers to receive notifications of their software on mobile phones.
 
-<!-- more -->
-
 I developed [notify-me](https://github.com/ShuochengWang/notify-me) crate to send notifications to myself when my order grabbing program runs.I designed an order grabbing program.And when I grab an order, I hope I can receive the notification immediately, instead of watching my program on the computer all the time.With this crate, when I grab the order successfully, I will use it to send a notification to my WeChat or email, so that I can immediately receive the notification on my mobile phone for processing.
 
 ## Features

@@ -10,8 +10,6 @@ description: "Auto log in websites by Rust reqwest"
 
 `reqwest` is a Rust crate for web programming. We can use it to auto log in some websites. Here I will give a simple example. If you want to automatically log in a website with strict man-machine verification, you may need to perfect more details.
 
-<!-- more -->
-
 #### Create a client with cookie store
 
 First, we need to create a `reqwest` client. Since we want to log in websites and do something in log-in status, we need to use cookies to show the website that we are logged in.

@@ -11,12 +11,6 @@ I have developed many crates before, but I haven't published them on [crates.io]
 until I developed [notify-me](https://github.com/ShuochengWang/notify-me) (see my last post for details).
 Here, I take notify-me as an example to record how to perfect crate details and publish it to [crates.io](https://crates.io/).
 
-<!-- more -->
-
-{% note info %}
-Non-original: Some parts are extracts from related docs.
-{% endnote %}
-
 ### Log in crates.io
 
 First things first, you’ll need an account on [crates.io](https://crates.io/) to acquire an API token. To do so, visit the home page and log in via a GitHub account (required for now). After this, visit your Account Settings page and create a API token if you don't have one before.
