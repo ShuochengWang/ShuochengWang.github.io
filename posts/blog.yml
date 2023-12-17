@@ -1,0 +1,11 @@
+title: Shuocheng's Blog
+index-title: Shuocheng Wang's Blog With Rust-Blog Style
+description: Just a blog to record something.
+index-html: This is the <b>Shuocheng Wang's Blog</b>.
+            And you can call me <b>Stuart</b>.
+            This blog is developed from 
+            <a href="https://blog.rust-lang.org/">Rust Blog</a>
+            because I'm a fan of Rust!
+maintained-by: Shuocheng Wang
+github: https://github.com/ShuochengWang/rust-blog-template
+domain: https://shuochengwang.github.io

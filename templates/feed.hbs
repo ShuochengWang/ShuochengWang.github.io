@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <generator uri="{{blog.domain}}/{{blog.prefix}}" version="0.1.0">{{blog.title}}</generator>
+    <link href="{{blog.domain}}/{{blog.prefix}}feed.xml" rel="self" type="application/atom+xml" />
+    <link href="{{blog.domain}}/{{blog.prefix}}" rel="alternate" type="text/html" />
+    <id>{{blog.domain}}/{{blog.prefix}}</id>
+    <title>{{blog.title}}</title>
+    <subtitle>{{blog.description}}</subtitle>
+    <author>
+        <name>Maintained by {{blog.maintained_by}}.</name>
+        <uri>https://github.com/ShuochengWang/rust-blog-template</uri>
+    </author>
+    <updated>{{feed_updated}}</updated>
+
+    {{#each posts}}
+    <entry>
+        <title>{{title}}</title>
+        <link rel="alternate" href="{{../blog.domain}}/{{../blog.prefix}}{{url}}" type="text/html" title="{{title}}" />
+        <published>{{published}}</published>
+        <updated>{{updated}}</updated>
+        <id>{{../blog.domain}}/{{../blog.prefix}}{{url}}</id>
+        <content type="html" xml:base="{{../blog.domain}}/{{../blog.prefix}}{{url}}">{{contents}}</content>
+    </entry>
+    {{/each}}
+</feed>

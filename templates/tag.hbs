@@ -1,0 +1,29 @@
+{{#*inline "page"}}
+<section class="white">
+  <div class="w-100 mw-none ph3 mw8-m mw8-l center f3">
+    <header>
+      <h2>{{ tag }}</h2>
+      <div class="highlight mt2 mb3"></div>
+    </header>
+
+    <div class="post">
+      <table class="post-list collapse w-100 f2-l f2-m f3-s">
+        {{#each posts}}
+        {{#if show_year}}
+        <tr>
+          <td class="bn"></td>
+          <td class="bn"><h3 class="f0-l f1-m f2-s mt4 mb0">Posts in {{year}}</h3></td>
+        </tr>
+        {{/if}}
+        <tr>
+          <td class="tr o-60 pr4 pr5-l bn">{{month_name month}}&nbsp;{{day}}</td>
+          <td class="bn"><a href="{{../root}}{{../blog.prefix}}{{url}}">{{title}}</a></td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+
+  </div>
+</section>
+{{/inline}}
+{{~> (parent)~}}

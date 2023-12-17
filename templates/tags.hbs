@@ -1,0 +1,20 @@
+{{#*inline "page"}}
+<section class="white">
+  <div class="w-100 mw-none ph3 mw8-m mw8-l center f3">
+    <header>
+      <h2>Tags</h2>
+      <div class="highlight mt2 mb3"></div>
+    </header>
+
+    <div class="post">
+      <ul>
+        {{#each tags}}
+          <li><a href="{{../root}}{{url}}">#&thinsp;{{tag}}</a></li>
+        {{/each}}
+      </ul> 
+    </div>
+
+  </div>
+</section>
+{{/inline}}
+{{~> (parent)~}}

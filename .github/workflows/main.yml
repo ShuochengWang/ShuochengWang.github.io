@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: Swatinem/rust-cache@v2.5.0
+
+      - run: cargo run
+      - run: cp CNAME ./site/
+      - run: touch site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v1.0.9
+        with:
+          path: site
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/master' }}
+
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v2.0.2
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}

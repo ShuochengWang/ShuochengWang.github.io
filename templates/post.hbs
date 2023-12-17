@@ -1,0 +1,32 @@
+{{#*inline "page"}}
+<section id="{{post.title}}" class="white">
+  <div class="w-100 mw-none ph3 mw8-m mw8-l center f3">
+    <header>
+      <h2>{{ post.title }}</h2>
+      <div class="highlight mt2 mb3"></div>
+    </header>
+
+    <div class="publish-date-tags">
+      {{month_name post.month}} {{post.day}}, {{post.year}}
+      &ensp;&ensp;
+      {{#each tags}}
+              <a href="{{../root}}{{url}}">#&thinsp;{{tag}}</a>
+              &ensp;
+      {{/each}}
+    </div>
+
+    <div class="post">
+      {{{ post.contents }}}
+    </div>
+
+    <div class="post-tags">
+      {{#each tags}}
+              <a href="{{../root}}{{url}}">#&thinsp;{{tag}}</a>
+              &ensp;
+      {{/each}}
+    </div>
+
+  </div>
+</section>
+{{/inline}}
+{{~> (parent)~}}
