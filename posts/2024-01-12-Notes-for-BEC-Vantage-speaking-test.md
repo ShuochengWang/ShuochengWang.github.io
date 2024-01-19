@@ -120,7 +120,7 @@ The decision whether to become a real team or a work group should be made based 
 
 1. A team leader is a person who leads a group of individuals to achieve set objectives or goals. Providing instruction, direction and coordinating the team work are the major responsibilities of a team leader. A team leader also performs many of the same tasks as the rest of the team members.
 2. One way is to organize team-related events so that employees feel more connected to one another and this will enhance a greater sense of responsibility for the success of the team. Another way is to give incentives to those who have performed well, or to address the suggestions given by team members.
-3. I think the secret of successful team building is setting up mutual trust. When members share a trusting relationship, they will better communicate with each oth.er. This helps to bring out the potentials, experience and creativity of the individual and create good work environment.
+3. I think the secret of successful team building is setting up mutual trust. When members share a trusting relationship, they will better communicate with each other. This helps to bring out the potentials, experience and creativity of the individual and create good work environment.
 4. Yes. If we get professional advice from a team building provider, we can im.prove the way team members communicate, upgrade their ability to solve problems and increase work efficiency in general.
 
 
@@ -173,13 +173,12 @@ the workplace.
 B: I think a democratic leadership style is very effective in mobilizing the team toward a common vision. The teammates will be happy to contribute fresh ideas
 and work together for the shared objectives.
 
-A: Being a good team leader means that he can never give up on the team. A dem.ocratic style enables the leader to communicate more effectively with the team and increase work efficiency.
+A: Being a good team leader means that he can never give up on the team. A democratic style enables the leader to communicate more effectively with the team and increase work efficiency.
 
 B: Good leaders are always willing to listen. An overbearing leader can only lead
 to negative team emotions.
 
-A: Yes. A good leader doesn't act like a bossy person who's in charge of every.
-one. He himself is a good team player.
+A: Yes. A good leader doesn't act like a bossy person who's in charge of everyone. He himself is a good team player.
 
 ---
 
@@ -192,7 +191,7 @@ one. He himself is a good team player.
 
 1. As a team leader, you should always be ready to praise your teammates whenever they have done a good job. Not to show your appreciation for their efforts can discourage them and as a result can lower the morale of the team.
 
-2. Bad leaders usually have a negative attitude towards everything. They are overly critical and always see negative outcomes in just about everything the team mem bers do. They cannot trust people and usually lack communication skills, so they tend to ignore information or concerns raised by his teammates.
+2. Bad leaders usually have a negative attitude towards everything. They are overly critical and always see negative outcomes in just about everything the team members do. They cannot trust people and usually lack communication skills, so they tend to ignore information or concerns raised by his teammates.
 
 3. Yes. If you choose a person who has worked in the company for a considerable length of time, he certainly has a good knowledge of the organization, and can make better decisions suited to the workplace.
 
